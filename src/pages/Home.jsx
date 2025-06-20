@@ -144,7 +144,7 @@ export default function Home() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           prompt: searchQuery,
-          imagePaths,
+          filters: { category, minPrice, maxPrice },
         }),
       });
 
