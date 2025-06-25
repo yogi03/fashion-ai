@@ -9,86 +9,70 @@ const sampleProducts = [
     id: 1,
     name: 'Zixer Artificial Leather Mens Formal Shoes || Office High Top Formal Shoes Men || Cozy Black Formal',
     category: 'Formal Shoes',
+    description: ['Zixer', 'Artificial Leather', 'Men', 'Formal', 'Shoes', 'Office Shoes', 'High Top', 'Black'],
     price: 999,
     image: "./src/assets/products/zixer.jpg",
     rating: 4.5,
   },
   {
     id: 2,
-    name: 'Cotton t-shirt with pocket Black | Parfois',
-    category: 'T shirt',
-    price: 599,
-    image: "./src/assets/products/parfois.jpg",
-    rating: 4.8,
-  },
-  {
-    id: 3,
-    name: 'Terry (280 GSM) Mafia Black Oversize T-Shirt For Men – ATOM',
-    category: 'T shirt',
-    price: 999,
-    image: "./src/assets/products/mafia.webp",
-    rating: 4.2,
-  },
-  {
-    id: 4,
-    name: 'H&M T-shirt',
-    category: 'T shirt',
-    price: 599,
-    image: "./src/assets/products/h&m.jpeg",
-    rating: 4.1,
-  },
-  {
-    id: 5,
     name: 'Levis Jeans',
     category: 'Jeans',
+    description: ['Levis', 'Jeans', 'Denim', 'Men', 'Blue', 'Casual Wear','Straight Fit'],
     price: 1299,
     image: "./src/assets/products/levis.jpg",
     rating: 4.3,
   },
   {
-    id: 6,
+    id: 3,
     name: 'Red Tape Sneakers',
     category: 'Sneakers',
+    description: ['Red Tape', 'Sneakers', 'Shoes', 'Men', 'Casual', 'White'],
     price: 1999,
     image: "./src/assets/products/redtape.jpg",
     rating: 4.6,
   },
   {
-    id: 7,
+    id: 4,
     name: 'Nike Air Max',
     category: 'Sneakers',
+    description: ['Nike', 'Air Max', 'Sneakers', 'Men', 'Running Shoes', 'Sporty', 'Comfort', 'Olive', 'Beige'],
     price: 6000,
     image: "./src/assets/products/nikeair.webp",
     rating: 4.0,
   },
   {
-    id: 8,
+    id: 5,
     name: 'Tommy Baggy Jeans',
     category: 'Jeans',
+    description: ['Tommy', 'Baggy Jeans', 'Denim', 'Relaxed Fit', 'Men', 'Streetwear', 'Black'],
     price: 2500,
     image: "./src/assets/products/tommy.jpg",
     rating: 4.2,
   },
   {
-    id: 9,
+    id: 6,
     name: 'Rare Rabbit Men Leeds Blue Cotton Fabric Full Sleeves Striped Shirt',
     category: 'Shirt',
+    description: ['Rare Rabbit', 'Shirt', 'Striped', 'Blue', 'Cotton', 'Full Sleeves', 'Men', 'Vertical Strip', 'Blue and white'],
     price: 1400,
     image: "./src/assets/products/rare.webp",
     rating: 3.9,
   },
   {
-    id: 10,
+    id: 7,
     name: 'Campus Sutra Men Unbalanced Striped Woven Shirt',
     category: 'Shirt',
+    description: ['Campus Sutra', 'Shirt', 'Unbalanced Stripes', 'Woven', 'Men', 'Casual', 'Gray and white', 'Short Sleeve'],
     price: 899,
     image: "./src/assets/products/campus.webp",
     rating: 4.4,
   },
   {
-    id: 11,
+    id: 8,
     name: 'Men Coastal Breeze Striped Short-Sleeve Shirt',
     category: 'Shirt',
+    description: ['Coastal Breeze', 'Shirt', 'Striped', 'Short Sleeve', 'Men', 'Summer Wear', 'Gray, white, sky-blue'],
     price: 899,
     image: "./src/assets/products/coastal.webp",
     rating: 4.0,
@@ -148,15 +132,15 @@ export default function Home() {
         }),
       });
 
-      const { image: base64Image } = await geminiRes.json();
+      const { images } = await geminiRes.json();
 
       // 4. Replace product image with generated outfit
-      const replacedProducts = matched.map((product) => ({
-        ...product,
-        image: `data:image/png;base64,${base64Image}`,
-      }));
-
-      setFilteredProducts(replacedProducts);
+      if(images && images.length>0){
+        setFilteredProducts(images.map(img=>({
+          ...img,
+          image: img.generatedImage,
+        })));
+      }
     } catch (err) {
       console.error('Error processing query:', err);
       setFilteredProducts([]);
