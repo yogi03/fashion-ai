@@ -1,12 +1,78 @@
-# React + Vite
+# 🛍️ Fashion AI — Smart Fashion-Paired Search for E-Commerce
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Reimagining Customer Experience with Emerging Technologies — A Walmart Sparkathon Project
 
-Currently, two official plugins are available:
+Fashion AI is an intelligent fashion search system for e-commerce platforms like Walmart. Instead of filtering by category, color, or price, users can type natural language queries like:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+Fashion AI understands the context and style intent, recommends compatible products, and even generates AI-powered visuals showing how the product pairs with the outfit — bridging the gap between search and styling.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🌟 Key Features
+
+- 🔍 **Natural Language Fashion Search**
+- 👗 **AI-Powered Outfit Compatibility**
+- 🖼️ **Smart Visual Previews (via Generative AI)**
+- 📈 **Trend-Aware Recommendations**
+
+---
+
+## 📦 Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Frontend | React, Tailwind CSS, Framer Motion |
+| Backend | Node.js |
+| NLP | HuggingFace Transformers, spaCy |
+| Compatibility Engine | Custom rule engine + ML |
+| Image Generation | Google Gemini Vision API |
+| Trend Tracking | Google Trends, Pinterest, Instagram scraping |
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to run the project locally:
+
+### 1. **Clone the repository**
+
+git clone https://github.com/your-username/fashion-ai.git
+cd fashion-ai
+
+### 2. **Install dependencies**
+npm install
+pip install -r requirements.txt
+
+### 3. **Setup Environment Variable**
+GROQ_API_KEY=your_groq_api_key
+GEMINI_API_KEY=your_gemini_api_key
+WALMART_API_KEY=your_walmart_api_key
+
+### 4. **Run the application**
+Terminal 1: Start Backend Server
+node ./api/groq-server.js
+
+Terminal 2: Start Frontend Server
+npm run dev
+Now open your browser at http://localhost:5173
+
+---
+
+## 🔍 Sample Search Queries
+
+- 🔍 **“Sneakers under ₹2,000 that go with a striped shirt”**
+- 👗 **“Formal shoes to match a navy blue blazer”**
+- 🖼️ **"Formal Shoes with coffee brown shirt and beige pants"**
+- 📈 **"Striped shirt with brown straight fit lenin pant"**
+
+---
+
+## Future Roadmap
+
+- 🧑‍💻 **Virtual Try-On (using Web AR)**
+- 🧩 **Outfit Builder (full wardrobe pairing tool)**
+- 🗣️ **Voice-Based Fashion Search**
+- 👠 **Personal AI Stylist Bot (chat-based recommendations)**
+
+---
