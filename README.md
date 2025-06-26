@@ -37,7 +37,7 @@ Follow these steps to run the project locally:
 
 ### 1. **Clone the repository**
 
-git clone https://github.com/your-username/fashion-ai.git
+git clone https://github.com/yogi03/fashion-ai.git
 cd fashion-ai
 
 ### 2. **Install dependencies**
@@ -47,7 +47,6 @@ pip install -r requirements.txt
 ### 3. **Setup Environment Variable**
 GROQ_API_KEY=your_groq_api_key
 GEMINI_API_KEY=your_gemini_api_key
-WALMART_API_KEY=your_walmart_api_key
 
 ### 4. **Run the application**
 Terminal 1: Start Backend Server
