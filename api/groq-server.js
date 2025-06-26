@@ -20,56 +20,56 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 const sampleProducts = [
   {
     name: 'Zixer Artificial Leather Mens Formal Shoes',
-    imagePath: './src/assets/products/zixer.jpg',
+    imagePath: '/products/zixer.jpg',
     category: 'Formal Shoes',
     price: 999,
     description: ['Zixer', 'Artificial Leather', 'Men', 'Formal', 'Shoes', 'Office Shoes', 'High Top', 'Black'],
   },
   {
     name: 'Levis Jeans',
-    imagePath: './src/assets/products/levis.jpg',
+    imagePath: '/products/levis.jpg',
     category: 'Jeans',
     price: 1299,
     description: ['Levis', 'Jeans', 'Denim', 'Men', 'Blue', 'Casual Wear', 'Straight Fit'],
   },
   {
     name: 'Red Tape Sneakers',
-    imagePath: './src/assets/products/redtape.jpg',
+    imagePath: '/products/redtape.jpg',
     category: 'Sneakers',
     price: 1999,
     description: ['Red Tape', 'Sneakers', 'Shoes', 'Men', 'Casual', 'White'],
   },
   {
     name: 'Nike Air Max',
-    imagePath: './src/assets/products/nikeair.webp',
+    imagePath: '/products/nikeair.webp',
     category: 'Sneakers',
     price: 6000,
     description: ['Nike', 'Air Max', 'Sneakers', 'Men', 'Running Shoes', 'Sporty', 'Comfort', 'Olive', 'Beige'],
   },
   {
     name: 'Tommy Baggy Jeans',
-    imagePath: './src/assets/products/tommy.jpg',
+    imagePath: '/products/tommy.jpg',
     category: 'Jeans',
     price: 2500,
     description: ['Tommy', 'Baggy Jeans', 'Denim', 'Relaxed Fit', 'Men', 'Streetwear', 'Black'],
   },
   {
     name: 'Rare Rabbit Striped Shirt',
-    imagePath: './src/assets/products/rare.webp',
+    imagePath: '/products/rare.webp',
     category: 'Shirt',
     price: 1400,
     description: ['Rare Rabbit', 'Shirt', 'Striped', 'Blue', 'Cotton', 'Full Sleeves', 'Men', 'Vertical Strip', 'Blue and white'],
   },
   {
     name: 'Campus Sutra Striped Shirt',
-    imagePath: './src/assets/products/campus.webp',
+    imagePath: '/products/campus.webp',
     category: 'Shirt',
     price: 899,
     description: ['Campus Sutra', 'Shirt', 'Unbalanced Stripes', 'Woven', 'Men', 'Casual', 'Gray and white', 'Short Sleeve'],
   },
   {
     name: 'Coastal Breeze Striped Shirt',
-    imagePath: './src/assets/products/coastal.webp',
+    imagePath: '/products/coastal.webp',
     category: 'Shirt',
     price: 899,
     description: ['Coastal Breeze', 'Shirt', 'Striped', 'Short Sleeve', 'Men', 'Summer Wear', 'Gray, white, sky-blue'],
@@ -141,7 +141,7 @@ app.post('/api/generate-outfit', async (req, res) => {
 
     // Generate an image for each matched product
     for (const product of matchedProducts) {
-      const resolvedPath = path.resolve(product.imagePath);
+      const resolvedPath = path.join(process.cwd(), 'public', product.imagePath);
       const mimeType = resolvedPath.endsWith('.png') ? 'image/png' : 'image/jpeg';
       const imageData = fs.readFileSync(resolvedPath).toString('base64');
 
