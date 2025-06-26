@@ -4,6 +4,15 @@ import { Search, UserCircle, ShoppingCart } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { getFilteredQuery } from '../groqSearch';
 
+import zixer from '../assets/products/zixer.jpg';
+import levis from '../assets/products/levis.jpg';
+import redtape from '../assets/products/redtape.jpg';
+import nikeair from '../assets/products/nikeair.webp';
+import tommy from '../assets/products/tommy.jpg';
+import rare from '../assets/products/rare.webp';
+import campus from '../assets/products/campus.webp';
+import coastal from '../assets/products/coastal.webp';
+
 const sampleProducts = [
   {
     id: 1,
@@ -11,7 +20,7 @@ const sampleProducts = [
     category: 'Formal Shoes',
     description: ['Zixer', 'Artificial Leather', 'Men', 'Formal', 'Shoes', 'Office Shoes', 'High Top', 'Black'],
     price: 999,
-    image: "./src/assets/products/zixer.jpg",
+    image: zixer,
     rating: 4.5,
   },
   {
@@ -20,7 +29,7 @@ const sampleProducts = [
     category: 'Jeans',
     description: ['Levis', 'Jeans', 'Denim', 'Men', 'Blue', 'Casual Wear','Straight Fit'],
     price: 1299,
-    image: "./src/assets/products/levis.jpg",
+    image: levis,
     rating: 4.3,
   },
   {
@@ -29,7 +38,7 @@ const sampleProducts = [
     category: 'Sneakers',
     description: ['Red Tape', 'Sneakers', 'Shoes', 'Men', 'Casual', 'White'],
     price: 1999,
-    image: "./src/assets/products/redtape.jpg",
+    image: redtape,
     rating: 4.6,
   },
   {
@@ -38,7 +47,7 @@ const sampleProducts = [
     category: 'Sneakers',
     description: ['Nike', 'Air Max', 'Sneakers', 'Men', 'Running Shoes', 'Sporty', 'Comfort', 'Olive', 'Beige'],
     price: 6000,
-    image: "./src/assets/products/nikeair.webp",
+    image: nikeair,
     rating: 4.0,
   },
   {
@@ -47,7 +56,7 @@ const sampleProducts = [
     category: 'Jeans',
     description: ['Tommy', 'Baggy Jeans', 'Denim', 'Relaxed Fit', 'Men', 'Streetwear', 'Black'],
     price: 2500,
-    image: "./src/assets/products/tommy.jpg",
+    image: tommy,
     rating: 4.2,
   },
   {
@@ -56,7 +65,7 @@ const sampleProducts = [
     category: 'Shirt',
     description: ['Rare Rabbit', 'Shirt', 'Striped', 'Blue', 'Cotton', 'Full Sleeves', 'Men', 'Vertical Strip', 'Blue and white'],
     price: 1400,
-    image: "./src/assets/products/rare.webp",
+    image: rare,
     rating: 3.9,
   },
   {
@@ -65,7 +74,7 @@ const sampleProducts = [
     category: 'Shirt',
     description: ['Campus Sutra', 'Shirt', 'Unbalanced Stripes', 'Woven', 'Men', 'Casual', 'Gray and white', 'Short Sleeve'],
     price: 899,
-    image: "./src/assets/products/campus.webp",
+    image: campus,
     rating: 4.4,
   },
   {
@@ -74,7 +83,7 @@ const sampleProducts = [
     category: 'Shirt',
     description: ['Coastal Breeze', 'Shirt', 'Striped', 'Short Sleeve', 'Men', 'Summer Wear', 'Gray, white, sky-blue'],
     price: 899,
-    image: "./src/assets/products/coastal.webp",
+    image: coastal,
     rating: 4.0,
   },
 ];
