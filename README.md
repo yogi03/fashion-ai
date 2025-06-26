@@ -37,16 +37,23 @@ Follow these steps to run the project locally:
 
 ### 1. **Clone the repository**
 
-git clone https://github.com/yogi03/fashion-ai.git
-cd fashion-ai
+- git clone https://github.com/yogi03/fashion-ai.git
+- cd fashion-ai
 
 ### 2. **Install dependencies**
 npm install
-pip install -r requirements.txt
 
-### 3. **Setup Environment Variable**
-GROQ_API_KEY=your_groq_api_key
-GEMINI_API_KEY=your_gemini_api_key
+### 3. **Setup Environment Variable in root directory**
+# .env
+- VITE_FIREBASE_API_KEY=your_api_key
+- VITE_FIREBASE_AUTH_DOMAIN=your_domain
+- VITE_FIREBASE_PROJECT_ID=your_project_id
+- VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+- VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+- VITE_FIREBASE_APP_ID=your_app_id
+- VITE_FIREBASE_MEASUREMENT_ID=ypur_measurement_id
+- GROQ_API_KEY=your_groq_api_key (create from here: https://console.groq.com/keys)
+- GEMINI_API_KEY=your_gemini_api_key  (create from here: https://ai.google.dev/gemini-api/docs/api-key)
 
 ### 4. **Run the application**
 Terminal 1: Start Backend Server
