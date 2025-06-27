@@ -1,4 +1,3 @@
-// groq-server.js
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -16,7 +15,7 @@ app.use(express.json());
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-// --- Utility: Match product by user query ---
+// Match product by user query
 const sampleProducts = [
   {
     name: 'Zixer Artificial Leather Mens Formal Shoes',

@@ -93,11 +93,13 @@ export default function Home() {
   const { cartItems } = useCart();
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProducts, setFilteredProducts] = useState(sampleProducts);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-  const delayDebounce = setTimeout(async () => {
+  const handleSearch = async () => {
+    setLoading(true);
     if (searchQuery.trim() === '') {
       setFilteredProducts(sampleProducts);
+      setLoading(false);
       return;
     }
 
@@ -126,6 +128,7 @@ export default function Home() {
 
       if (matched.length === 0) {
         setFilteredProducts([]);
+        setLoading(false);
         return;
       }
 
@@ -143,9 +146,8 @@ export default function Home() {
 
       const { images } = await geminiRes.json();
 
-      // 4. Replace product image with generated outfit
-      if(images && images.length>0){
-        setFilteredProducts(images.map(img=>({
+      if (images && images.length > 0) {
+        setFilteredProducts(images.map((img) => ({
           ...img,
           image: img.generatedImage,
         })));
@@ -154,10 +156,22 @@ export default function Home() {
       console.error('Error processing query:', err);
       setFilteredProducts([]);
     }
-  }, 600);
+    setLoading(false);
+  };
 
-  return () => clearTimeout(delayDebounce);
-}, [searchQuery]);
+  // useEffect(() => {
+  //   const delayDebounce = setTimeout(() => {
+  //     handleSearch();
+  //   }, 600);
+
+  //   return () => clearTimeout(delayDebounce);
+  // }, [searchQuery]);
+  useEffect(() => {
+    if (searchQuery.trim() === '') {
+      setFilteredProducts(sampleProducts); // reset products
+      navigate('/'); // Redirect to home page
+    }
+  }, [searchQuery]);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -166,15 +180,26 @@ export default function Home() {
         <h1 className="text-xl font-bold text-blue-600">ShopNow</h1>
 
         {/* Search Bar */}
-        <div className="relative w-full max-w-xs mx-4">
-          <Search className="absolute left-3 top-2.5 w-5 h-5 text-gray-400" />
-          <input
-            type="text"
-            placeholder="Search products..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
+        <div className="w-full max-w-md mx-4 flex">
+          <div className="relative flex-grow">
+            <Search className="absolute left-3 top-2.5 w-5 h-5 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-l-full focus:outline-none focus:ring-blue-400"
+            />
+          </div>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              handleSearch();
+            }}
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-r-full"
+          >
+            Search
+          </button>
         </div>
 
         {/* Icons */}
@@ -195,7 +220,15 @@ export default function Home() {
 
       {/* Products List */}
       <main className="pt-20 p-4">
-        {filteredProducts.length > 0 ? (
+        {loading ? (
+          <div className="flex justify-center items-center h-160">
+            <div className="loader-con">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="pfile" style={{ "--i": i }}></div>
+              ))}
+            </div>
+          </div>
+        ) : filteredProducts.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {filteredProducts.map((product) => (
               <div
