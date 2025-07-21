@@ -57,7 +57,7 @@ npm install
 
 ### 4. **Run the application**
 Terminal 1: Start Backend Server
-node ./api/groq-server.js
+node ./api/groq/index.js
 
 Terminal 2: Start Frontend Server
 npm run dev
